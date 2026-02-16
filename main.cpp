@@ -6,7 +6,7 @@ using namespace std;
 int main(){
 
     Mandelbrot::Mandelbrot myplot(1920, 1080);
-    myplot.draw("/home/ubuntu/mandelbrot/images", Mandelbrot::Mandelbrot::GREEN);
+    myplot.draw("./images/green-512.bmp", Mandelbrot::Mandelbrot::GREEN);
 
     return 0;
 }

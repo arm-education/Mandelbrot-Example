@@ -22,7 +22,6 @@ int Mandelbrot::getIterations(double x, double y){
     /*
     Will return any number up to MAX_ITERATIONS (1024)
     */
-    const int MAX_ITERATIONS = (1<<10); // 1024
     const int THRESHOLD = 2; // 2
     
     complex<double> z(0); // 0 + 0j
