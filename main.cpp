@@ -3,13 +3,10 @@
 
 using namespace std;
 
-int main(int argc, char* argv[]){
+int main(){
 
-    const int NUM_THREADS = std::stoi(argv[1]);
-    std::cout << "Number of Threads = " << NUM_THREADS << std::endl;
-
-    Mandelbrot::Mandelbrot myplot(1920, 1080, NUM_THREADS);
-    myplot.draw("./images/green-1-thread.bmp", Mandelbrot::Mandelbrot::GREEN);
+    Mandelbrot::Mandelbrot myplot(1920, 1080);
+    myplot.draw("./images/green.bmp", Mandelbrot::Mandelbrot::GREEN);
 
     return 0;
 }

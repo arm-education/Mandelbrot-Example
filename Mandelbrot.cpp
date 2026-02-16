@@ -9,13 +9,12 @@ using namespace std;
 
 namespace Mandelbrot{
 
-Mandelbrot::Mandelbrot(int width, int height, const int N_THREADS):
+Mandelbrot::Mandelbrot(int width, int height):
     _bitmap(width, height),
     _width(width),
     _height(height), 
     colourHistogram(new int[MAX_ITERATIONS]{0}),
-    fractalData(new int[_width*_height]),
-    NUM_THREADS(N_THREADS)
+    fractalData(new int[_width*_height])
     {
 }
 
@@ -46,37 +45,14 @@ void Mandelbrot::draw(string fileName, drawColor colourSelection ){
     int* p = colourHistogram.get();
     int* pfractalData = fractalData.get();
 
-    std::vector<std::thread> threads;
-    threads.reserve(NUM_THREADS);
-
-    auto work = [&](int thread_id){
-        for (int y = thread_id; y < _height; y+= NUM_THREADS){
-            for (int x = 0; x < _width; x++){
-                double xFractal = (x - _width/2 - 150) * 2.0/_width;
-                double yFractal = (y - _height/2) * 2.0/_width;
-
-                int num_iters = getIterations(xFractal, yFractal);
-                
-                unique_lock<mutex> l(histMutex);
-                // create a pixel map for data
-                pfractalData[y*_width + x] = num_iters;
-
-                // remove max interations from histogram for prettier plot.
-                if (num_iters != MAX_ITERATIONS){
-                    p[num_iters]++;
-                }
-                l.unlock();
-            }
-        }
-    };
-
-    /*for (int y = NUM_THREADS-1; y < _height; y+= NUM_THREADS){
-        for (int x = NUM_THREADS-1; x < _width; x+=NUM_THREADS){
+    
+    for (int y = 0; y < _height; y+= 1){
+        for (int x = 0; x < _width; x++){
             double xFractal = (x - _width/2 - 150) * 2.0/_width;
             double yFractal = (y - _height/2) * 2.0/_width;
 
             int num_iters = getIterations(xFractal, yFractal);
-
+                
             // create a pixel map for data
             pfractalData[y*_width + x] = num_iters;
 
@@ -84,14 +60,8 @@ void Mandelbrot::draw(string fileName, drawColor colourSelection ){
             if (num_iters != MAX_ITERATIONS){
                 p[num_iters]++;
             }
-            }
-        }*/
-    for(int tid = 0; tid < NUM_THREADS; tid++){
-        threads.emplace_back(work, tid);
-    }
-
-    for(auto& i: threads){
-        i.join();
+                
+        }
     }
 
     int total{0};
