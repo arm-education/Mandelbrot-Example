@@ -1,5 +1,6 @@
 Mandelbrot-1-thread
 Mandelbrot-32-thread
-./images
+./builds/*
+./images/*
 arg-test
 mandelbrot
