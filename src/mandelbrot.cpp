@@ -4,7 +4,7 @@
 #include <vector>
 #include <math.h>
 
-#include "include/Mandelbrot.h"
+#include "Mandelbrot.h"
 
 using namespace std;
 

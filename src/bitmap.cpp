@@ -1,9 +1,9 @@
 #include <fstream>
 #include <iostream>
 #include <cmath>
-#include "include/bitmap.h"
-#include "include/BitmapFileHeader.h"
-#include "include/BitmapInfoHeader.h"
+#include "bitmap.h"
+#include "BitmapFileHeader.h"
+#include "BitmapInfoHeader.h"
 
 using namespace Mandelbrot;
 using namespace std;

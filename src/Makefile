@@ -14,7 +14,7 @@ STD := -std=c++11
 DEBUG := -g
 OPT ?= -O0
 
-CXXFLAGS := $(STD) $(DEBUG) $(OPT)
+CXXFLAGS := $(STD) $(DEBUG) $(OPT) -I../include
 
 # Default target
 all: $(TARGET)
