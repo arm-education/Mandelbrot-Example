@@ -7,7 +7,7 @@ TARGET_NAME := mandelbrot-parallel
 TARGET := $(BUILD_DIR)/$(TARGET_NAME)
 
 # Source files
-SRCS := main.cpp Mandelbrot.cpp bitmap.cpp
+SRCS := main.cpp mandelbrot.cpp bitmap.cpp
 
 # Flags
 STD := -std=c++11
