@@ -1,4 +1,4 @@
-#include "Mandelbrot.h"
+#include "include/Mandelbrot.h"
 #include <iostream>
 
 using namespace std;
